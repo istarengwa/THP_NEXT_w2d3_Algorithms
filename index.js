@@ -18,38 +18,47 @@ console.log(sumOfTwo([10, 15, 3, 7], 17));
 
 //// Exercice 2
 
-function viewCheck(arr) {
-  let arrLength = arr.length;
-  let viewtCtr = 0;
-  for (i = 0; i < arrLength; i++) {
+function westEst(array, viewEst = 0) {
+  for (let i=0;i<array.length;i++) {
     let tmpView = true;
-    for (j = i + 1; j < arrLength; j++) {
-      if (arr[i] <= arr[j]) {
+    for (let j=i+1;j<array.length;j++) {
+      if (array[i] <= array[j]) {
         tmpView = false;
       }
     }
-  if (tmpView) viewtCtr++;
+    if (tmpView) viewEst++;
   }
-  return viewtCtr;
+  return viewEst;
 }
 
 console.log("Exercice 2 :");
-console.log(viewCheck([3, 7, 8, 3, 6, 1]));
+console.log(westEst([3, 7, 8, 3, 6, 1]));
+console.log(westEst([1, 4, 5, 8]));
 
 //// Exercice 3
 
-function jenAiRaLcu(array, k, c = 0) {
-  
+function jenAiRaLcu(array, k) {
+  for (let i = 0; i < array.length - 1; i++) {
+    // NB Declaring an array and slicing/splicing it will return the removed element(s) whereas it won't if you do it separately.
+    let workingArr = [...array];
+    if (workingArr.includes(k - array[i])) {
+      return true;
+    }
+  }
+  return false;
 }
 
 console.log("Exercice 3 :");
 console.log(jenAiRaLcu([10, 15, 3, 7], 17));
 
-
 //// Exercice 4
 
+function EncorePlus(array) {
+  "non g pas triché";
+}
+
 console.log("Exercice 4 :");
-console.log(viewCheck([3, 7, 8, 3, 6, 1]));
+console.log(westEst([3, 7, 8, 3, 6, 1]));
 
 //// Exercice 5
 
@@ -74,11 +83,11 @@ function exerciceSix(array) {
   for (let i = 0; i < array.length - 1; i++){
 
 // on crée un nouveau tableau constitué de i+1 à la fin du tableau
-  arrayNew = array.slice(i + 1);
-  if(Math.max(...arrayNew) < array[i]){
-    result += 1;
+    arrayNew = array.slice(i + 1);
+    if(Math.max(...arrayNew) < array[i]){
+      result += 1;
+    }
   }
-}
   return result + 1;
 }
 

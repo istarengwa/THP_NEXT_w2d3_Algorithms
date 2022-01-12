@@ -52,13 +52,18 @@ console.log("Exercice 3 :");
 console.log(jenAiRaLcu([10, 15, 3, 7], 17));
 
 //// Exercice 4
-
-function EncorePlus(array) {
-  "non g pas triché";
+let result = 1;
+function jenAiMarre(array, i=0) {
+  if (i>=array.length - 1) {
+    return result;
+  }
+  array.slice(i+1).filter(e => array[i] <= e ).length == 0 ? result++ : null;
+  return jenAiMarre(array, i+1);
 }
 
 console.log("Exercice 4 :");
-console.log(westEst([3, 7, 8, 3, 6, 1]));
+console.log(jenAiMarre([3, 7, 8, 3, 6, 1]));
+console.log(jenAiMarre([1, 4, 5, 8]));
 
 //// Exercice 5
 

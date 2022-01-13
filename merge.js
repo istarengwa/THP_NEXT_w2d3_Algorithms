@@ -3,6 +3,9 @@ const fs = require('fs');
 const nbList = process.argv[2];
 
 function getFile() {
+  if (nbList === undefined) {
+    throw new Error('Veuillez renseigner un nom de fichier.')
+  }
   try {
     const data = fs.readFileSync(nbList, 'utf8');
     return data.length>0 ? data : console.error("Empty file.");
